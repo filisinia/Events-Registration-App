@@ -1,4 +1,6 @@
 import express, { Express, Request, Response } from 'express';
+import { createProxyMiddleware, Filter, Options, RequestHandler } from 'http-proxy-middleware';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 
 import { getAllEvents, getEventById } from './db/events';
@@ -6,9 +8,24 @@ import { getAllParticipants, addParticipant } from './db/participants';
 
 const app: Express = express();
 
-app.set('port', 3000);
+app.set('port', 3001);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+// app.use(
+//   '/events',
+//   createProxyMiddleware({
+//     target: 'http://localhost:3001/events',
+//     changeOrigin: true,
+//   }),
+// );
+// app.use(
+//   '/participants',
+//   createProxyMiddleware({
+//     target: 'http://localhost:3001/participants',
+//     changeOrigin: true,
+//   }),
+// );
 
 app.get('/events', (req: Request, res: Response) => {
   const events = getAllEvents();
