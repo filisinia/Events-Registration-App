@@ -10,5 +10,5 @@ export interface ParticipantData {
   fullName: string;
   email: string;
   dateOfBirth: string;
-  howDidYouHear: string;
+  howDidYouHear: 'social media' | 'friends' | 'found myself';
 }

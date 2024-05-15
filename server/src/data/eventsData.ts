@@ -1,4 +1,6 @@
-export default [
+import { EventData } from "../types/types";
+
+const eventsData: EventData[] = [
   {
     title: 'Music Festival',
     description: 'A large outdoor music festival featuring various genres and artists.',
@@ -144,3 +146,5 @@ export default [
     organizer: 'Business Association'
   },
 ];
+
+export default eventsData;
