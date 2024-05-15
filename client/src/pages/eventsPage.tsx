@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import EventElems from './components/eventElems/eventElems';
-import { EventData } from './types/types';
-import getAllEvents from './api/server-functions';
+import { useState, useEffect } from "react";
+import getAllEvents from "../api/server-functions";
+import EventElems from "../components/eventElems/eventElems";
+import { EventData } from "../types/types";
 
-function App() {
+export default function EventsPage() {
   const [events, setEvents] = useState<EventData[]>([]);
 
   useEffect( () => {
@@ -20,5 +20,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
