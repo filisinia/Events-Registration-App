@@ -22,3 +22,15 @@ export async function submitForm(participantData: ParticipantData): Promise<void
     if (error instanceof Error) throw new Error(`Problem with submitting the form: ${error.message}`);
   }
 }
+
+export async function getAllParticipants(eventId: number): Promise<ParticipantData[] | null> {
+  try {
+    const response = await fetch(`/participants/${eventId}`);
+    if (!response.ok) throw new Error('Network response was not ok');
+    const eventsData = await response.json();
+    return eventsData;
+  } catch (error) {
+    if (error instanceof Error) throw new Error(`Problem with getting data from server: ${error.message}`);
+    return null;
+  }
+}

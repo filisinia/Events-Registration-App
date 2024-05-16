@@ -7,6 +7,7 @@ export interface EventData {
 }
 
 export interface ParticipantData {
+  id: number;
   eventId: number;
   fullName: string;
   email: string;
