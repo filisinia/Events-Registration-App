@@ -1,5 +1,5 @@
-import axios from "axios";
-import { EventData, ParticipantData } from "../types/types";
+import axios from 'axios';
+import { EventData, ParticipantData } from '../types/types';
 
 export async function getAllEvents(sort?: string): Promise<EventData[] | null> {
   try {
@@ -16,7 +16,6 @@ export async function getAllEvents(sort?: string): Promise<EventData[] | null> {
 export async function submitForm(participantData: ParticipantData): Promise<void> {
   try {
     const response = await axios.post('http://localhost:3001/participants', participantData);
-    console.log('Response:', response.data);
     return response.data;
   } catch (error) {
     if (error instanceof Error) throw new Error(`Problem with submitting the form: ${error.message}`);
