@@ -13,9 +13,8 @@ export default function ParticipantsPage() {
 
   useEffect(() => {
     (async () => {
-      const eventsData = await getAllParticipants(eventId);
-      if (eventsData) setParticipants(eventsData);
-      console.log(eventsData);
+      const participantsData = await getAllParticipants(eventId);
+      if (participantsData) setParticipants(participantsData);
     })();
   }, [eventId]);
 
