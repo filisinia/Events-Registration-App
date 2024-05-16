@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Card, CardContent, Box, Grid, Typography, Button } from "@mui/material";
 import { EventData } from "../../types/types";
 import styles from "./eventElemsStyle";
@@ -16,8 +17,8 @@ export default function EventElems({ eventData }: { eventData: EventData[] }): J
                 <Typography>{event.date}</Typography>
               </Box>
               <Box display='flex' justifyContent='space-between'>
-                <Button>Register</Button>
-                <Button>View</Button>
+                <Button component={Link} to='/register'>Register</Button>
+                <Button component={Link} to='/people'>View</Button>
               </Box>
             </CardContent>
           </Card>
