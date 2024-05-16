@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 import Header from "../../components/header/header";
 import EventElems from "../../components/eventElems/eventElems";
 import { EventData } from "../../types/types";
-import RegisterPage from "../registerPage/registerPage";
+import RegistrationForm from "../../components/form/form";
 
 export default function EventsPage() {
   const [events, setEvents] = useState<EventData[]>([]);
@@ -33,7 +33,7 @@ export default function EventsPage() {
       <Container sx={{ padding: '20px 0' }}>
         {events.length === 0 ? <span>Loading...</span> : <EventElems eventData={events} registerBtnHandler={registerBtnHandler} />}
       </Container>
-      { selectedEvent ? <RegisterPage eventData={selectedEvent} closeDialog={closeDialog} /> : '' }
+      { selectedEvent ? <RegistrationForm eventData={selectedEvent} closeDialog={closeDialog} /> : '' }
     </>
   );
 }

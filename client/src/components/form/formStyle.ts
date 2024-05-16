@@ -7,13 +7,12 @@ const styles = {
   },
 
   form: {
-    padding: '30px 50px',
+    padding: '35px',
     display:'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 'max-content',
-    gap: '10px',
+    gap: '20px',
     border: '1px solid #9aacf9'
   }
 };
