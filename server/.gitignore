@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+events.db
+events.db-shm
+events.db-wal
 
 # Editor directories and files
 .vscode/*
