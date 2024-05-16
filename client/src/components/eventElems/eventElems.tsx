@@ -23,7 +23,7 @@ export default function EventElems({ eventData, registerBtnHandler }: EventElems
               </Box>
               <Box display='flex' justifyContent='space-between'>
                 <Button onClick={() => registerBtnHandler(event)}>Register</Button>
-                <Button component={Link} to='/people'>View</Button>
+                <Button component={Link} to={`/people/${event.id}`}>View</Button>
               </Box>
             </CardContent>
           </Card>

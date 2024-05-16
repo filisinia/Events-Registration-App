@@ -30,7 +30,7 @@ export default function EventsPage() {
   return (
     <>
       <Header content='Events' />
-      <Container sx={{ padding: '20px 0' }}>
+      <Container sx={{paddingTop: '20px'}}>
         {events.length === 0 ? <span>Loading...</span> : <EventElems eventData={events} registerBtnHandler={registerBtnHandler} />}
       </Container>
       { selectedEvent ? <RegistrationForm eventData={selectedEvent} closeDialog={closeDialog} /> : '' }

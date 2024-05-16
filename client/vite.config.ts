@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/events': 'http://localhost:3001',
+      '/participants': 'http://localhost:3001',
     }
   }
 })
