@@ -1,5 +1,5 @@
-import axios from "axios";
-import { EventData, ParticipantData } from "../types/types";
+import axios from 'axios';
+import { EventData, ParticipantData } from '../types/types';
 
 export async function getAllEvents(sort?: string): Promise<EventData[] | null> {
   try {

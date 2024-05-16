@@ -1,5 +1,5 @@
-import { TextField } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { TextField } from '@mui/material';
+import { ChangeEvent, useState } from 'react';
 
 interface InputFieldProps {
   label: string;
@@ -12,7 +12,7 @@ export default function InputField({ label, name, validator, onChange }: InputFi
   const [value, setValue] = useState('');
   const [error, setError] = useState<string | boolean>(false);
 
-  function handleChange (e: ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const newValue = e.target.value;
     const errorMessage = validator(newValue);
     setValue(newValue);
@@ -31,4 +31,4 @@ export default function InputField({ label, name, validator, onChange }: InputFi
       fullWidth
     />
   );
-};
+}
