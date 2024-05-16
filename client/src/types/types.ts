@@ -14,3 +14,5 @@ export interface ParticipantData {
   dateOfBirth: string;
   howDidYouHear: 'social media' | 'friends' | 'found myself';
 }
+
+export type SortingParams = 'title' | 'date' | 'organizer' | 'none';

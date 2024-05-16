@@ -12,11 +12,29 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get('/events', (req: Request, res: Response) => {
-  const events = getAllEvents();
+app.get('/events', (req, res) => {
+  const sortBy = req.query.sort;
+  let events = getAllEvents();
+
+  if (sortBy) {
+    switch (sortBy) {
+      case 'title':
+        events = events.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'date':
+        events = events.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+        break;
+      case 'organizer':
+        events = events.sort((a, b) => a.organizer.localeCompare(b.organizer));
+        break;
+      default:
+        break;
+    }
+  }
+
   res.json(events);
-  res.send(events);
 });
+
 
 app.get('/events/:id', (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
