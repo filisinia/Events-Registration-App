@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import Search from "./search";
 import styles from "./headerStyle";
 
-export default function Header({ content }: { content: 'Events' | 'Participants' }): JSX.Element {
+interface HeaderProps {
+  content: 'Events' | 'Participants';
+  onSearch?: (_text: string) => void;
+}
+
+export default function Header({ content, onSearch }: HeaderProps): JSX.Element {
   return (
     <>
     <AppBar component='nav'>
@@ -11,7 +16,7 @@ export default function Header({ content }: { content: 'Events' | 'Participants'
         <Typography variant='h5'>{content}</Typography>
         { content === 'Participants' ?
         <Box sx={styles.controllers}>
-          <Search />
+          {onSearch ? <Search onSearch={onSearch}/> : ''}
           <Button component={Link} to='/' color='success' variant='contained'>Back</Button>
         </Box> : ''}
       </Toolbar>
