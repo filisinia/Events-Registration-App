@@ -34,6 +34,12 @@ The Events Registration App is an events board page where users can view the pag
     npm run start
     ```
 
+3. Open this link
+   
+    ```bash
+    http://localhost:5173/
+    ```
+
 ### Screenshots
 
 **Events page**
