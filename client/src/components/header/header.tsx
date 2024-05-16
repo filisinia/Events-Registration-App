@@ -1,6 +1,7 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import Search from "./search";
+import Sorting from "./sorting";
 import styles from "./headerStyle";
 
 interface HeaderProps {
@@ -18,7 +19,7 @@ export default function Header({ content, onSearch }: HeaderProps): JSX.Element 
         <Box sx={styles.controllers}>
           {onSearch ? <Search onSearch={onSearch}/> : ''}
           <Button component={Link} to='/' color='success' variant='contained'>Back</Button>
-        </Box> : ''}
+        </Box> : <Sorting />}
       </Toolbar>
     </AppBar>
     <Toolbar />

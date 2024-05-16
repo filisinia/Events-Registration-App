@@ -9,6 +9,12 @@ const styles = {
     gap: '15px'
   },
 
+  sort: {
+    backgroundColor: '#ffffffde',
+    borderRadius: '5px',
+    width: '250px'
+  },
+
   search: {
     backgroundColor: '#ffffffde',
     paddingLeft: '10px',
