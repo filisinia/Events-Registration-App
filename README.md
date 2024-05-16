@@ -48,6 +48,3 @@ The Events Registration App is an events board page where users can view the pag
 
 ![image](https://github.com/filisinia/Events-Registration-App/assets/113894148/46da2a76-6192-42e5-bd69-1fe5980ac210)
 
-
-
-    
