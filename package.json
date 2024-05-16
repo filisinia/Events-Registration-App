@@ -4,6 +4,9 @@
   "description": "- React\r - TypeScript\r - Material UI\r - NodeJS\r - Express",
   "main": "index.js",
   "scripts": {
+    "installClient": "cd ./client && npm i",
+    "installServer": "cd ./server && npm i",
+    "prepare": "npm run installClient && npm run installServer",
     "start": "concurrently \"cd ./client && npm run dev\" \"cd ./server && npm run start\""
   },
   "keywords": [],

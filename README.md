@@ -22,16 +22,35 @@ The Events Registration App is an events board page where users can view the pag
     ```bash
     git clone https://github.com/filisinia/Events-Registration-App.git
     ```
-2. Install NPM packages
+
+2. Open the project's folder:
+   
+    ```bash
+    cd Events-Registration-App
+    ```
+
+3. Install NPM packages
    
     ```bash
     npm install
     ```
+
+    then
+
+    ```bash
+    npm run prepare
+    ```
     
-3. Run this command on the root folder:
+4. Run this command on the root folder:
    
     ```bash
     npm run start
+    ```
+
+5. Open this link
+   
+    ```bash
+    http://localhost:5173/
     ```
 
 ### Screenshots
@@ -47,4 +66,3 @@ The Events Registration App is an events board page where users can view the pag
 **Participants page**
 
 ![image](https://github.com/filisinia/Events-Registration-App/assets/113894148/46da2a76-6192-42e5-bd69-1fe5980ac210)
-
