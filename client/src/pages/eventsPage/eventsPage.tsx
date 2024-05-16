@@ -11,13 +11,11 @@ export default function EventsPage() {
   const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
 
   function registerBtnHandler(event: EventData): void {
-    console.log('selected event:', event);
     setSelectedEvent(event);
   }
 
   function closeDialog(): void {
     setSelectedEvent(null);
-    console.log('selected event is null');
   }
 
   useEffect(() => {

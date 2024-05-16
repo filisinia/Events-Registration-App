@@ -3,8 +3,6 @@ import styles from './participantsElemsStyle';
 import { ParticipantData } from '../../types/types';
 
 export default function ParticipantsElems({ participantsData }: { participantsData: ParticipantData[] }): JSX.Element {
-  console.log(participantsData);
-
   return (
     <Grid container spacing={3}>
       {participantsData.map((participant) => (

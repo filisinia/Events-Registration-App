@@ -27,18 +27,16 @@ export default function RegistrationForm({ eventData, closeDialog }: RegisterPag
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (Object.values(formValid.current).every((isValid) => isValid)) {
-      console.log('Form is valid! Submitting the form...');
-      await submitForm({
+      const participantData = {
         eventId: eventData.id,
-        fullName: e.currentTarget.fullname.value,
+        fullName: e.currentTarget.fullName.value,
         email: e.currentTarget.email.value,
         dateOfBirth: e.currentTarget.dateOfBirth.value,
         howDidYouHear: e.currentTarget.howDidYouHear.value,
-      });
-      console.log('Form submitted successfully');
+      };
+
+      await submitForm(participantData);
       closeDialog();
-    } else {
-      console.log('Form is invalid! Please check the fields...');
     }
   }
 
