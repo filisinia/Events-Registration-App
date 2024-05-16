@@ -1,7 +1,6 @@
 import { Button, Box, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-// import styles from './errorPageStyle';
-import styles from 'pages/errorPage/errorPageStyle';
+import styles from './errorPageStyle';
 
 const ErrorPage = (): JSX.Element => (
   <Box sx={styles.container}>
