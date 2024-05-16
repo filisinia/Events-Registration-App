@@ -4,6 +4,7 @@ import { EventData } from '../../types/types';
 import InputField from './inputField';
 import { emailValidator, fullNameValidator } from './validators';
 import { useRef } from 'react';
+import { submitForm } from '../../api/server-functions';
 
 interface RegisterPageProps {
   eventData: EventData;
@@ -13,9 +14,19 @@ interface RegisterPageProps {
 export default function RegistrationForm({eventData, closeDialog}: RegisterPageProps): JSX.Element {
   const formValid = useRef({ name: false, email: false });
 
-  function handleSubmit () {
+  async function handleSubmit (e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     if (Object.values(formValid.current).every(isValid => isValid)) {
       console.log("Form is valid! Submitting the form...");
+      await submitForm({
+        eventId: eventData.id,
+        fullName: e.currentTarget.fullname.value,
+        email: e.currentTarget.email.value,
+        dateOfBirth: e.currentTarget.dateOfBirth.value,
+        howDidYouHear: e.currentTarget.howDidYouHear.value
+      });
+      console.log('Form submitted successfully');
+      closeDialog();
     } else {
       console.log("Form is invalid! Please check the fields...");
     }
@@ -28,7 +39,7 @@ export default function RegistrationForm({eventData, closeDialog}: RegisterPageP
         <Typography variant='h5' fontWeight={600}>{eventData.title}</Typography>
         <InputField
           label="Full name"
-          name='name'
+          name='fullname'
           validator={fullNameValidator}
           onChange={isValid => (formValid.current.name = isValid)}
         />
@@ -45,6 +56,7 @@ export default function RegistrationForm({eventData, closeDialog}: RegisterPageP
             type='date'
             size='small'
             required
+            fullWidth
           />
           <FormLabel id="howDidYouHear">Where did you hear about this event?</FormLabel>
           <RadioGroup
@@ -58,7 +70,7 @@ export default function RegistrationForm({eventData, closeDialog}: RegisterPageP
             <FormControlLabel value="found myself" control={<Radio />} label="Found myself" />
           </RadioGroup>
         <Box>
-          <Button onClick={closeDialog} variant='outlined'>Back</Button>
+          <Button onClick={closeDialog} variant='outlined' sx={{marginRight: '15px'}}>Back</Button>
           <Button type='submit' variant='contained'>Register</Button>
         </Box>
       </Box>

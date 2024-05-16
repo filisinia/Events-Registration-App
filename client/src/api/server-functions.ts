@@ -1,6 +1,7 @@
-import { EventData } from "../types/types";
+import axios from "axios";
+import { EventData, ParticipantData } from "../types/types";
 
-export default async function getAllEvents(): Promise<EventData[] | null> {
+export async function getAllEvents(): Promise<EventData[] | null> {
   try {
     const response = await fetch('/events');
     if (!response.ok) throw new Error('Network response was not ok');
@@ -9,5 +10,15 @@ export default async function getAllEvents(): Promise<EventData[] | null> {
   } catch (error) {
     if (error instanceof Error) throw new Error(`Problem with getting data from server: ${error.message}`);
     return null;
+  }
+}
+
+export async function submitForm(participantData: ParticipantData): Promise<void> {
+  try {
+    const response = await axios.post('http://localhost:3001/participants', participantData);
+    console.log('Response:', response.data);
+    return response.data;
+  } catch (error) {
+    if (error instanceof Error) throw new Error(`Problem with submitting the form: ${error.message}`);
   }
 }

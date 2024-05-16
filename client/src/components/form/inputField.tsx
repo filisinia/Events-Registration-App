@@ -28,6 +28,7 @@ export default function InputField({ label, name, validator, onChange }: InputFi
       onChange={handleChange}
       error={!!error}
       helperText={error}
+      fullWidth
     />
   );
 };

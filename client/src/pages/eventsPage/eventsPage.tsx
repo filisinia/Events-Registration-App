@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import getAllEvents from "../../api/server-functions";
+import { getAllEvents } from "../../api/server-functions";
 import { Container } from "@mui/material";
 import Header from "../../components/header/header";
 import EventElems from "../../components/eventElems/eventElems";
