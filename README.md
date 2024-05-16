@@ -33,4 +33,21 @@ The Events Registration App is an events board page where users can view the pag
     ```bash
     npm run start
     ```
+
+### Screenshots
+
+**Events page**
+
+![image](https://github.com/filisinia/Events-Registration-App/assets/113894148/68761fb8-21c9-4e00-af9a-d80bc7b40bfa)
+
+**Registration form**
+
+![image](https://github.com/filisinia/Events-Registration-App/assets/113894148/63b6d44b-d874-48c7-adb1-825d6091e402)
+
+**Participants page**
+
+![image](https://github.com/filisinia/Events-Registration-App/assets/113894148/46da2a76-6192-42e5-bd69-1fe5980ac210)
+
+
+
     
