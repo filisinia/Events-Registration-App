@@ -7,12 +7,12 @@ export interface EventData {
 }
 
 export interface ParticipantData {
-  id: number;
   eventId: number;
   fullName: string;
   email: string;
   dateOfBirth: string;
   howDidYouHear: 'social media' | 'friends' | 'found myself';
+  id?: number;
 }
 
 export type SortingParams = 'title' | 'date' | 'organizer' | 'none';
