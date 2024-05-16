@@ -45,7 +45,6 @@ app.get('/events/:id', (req: Request, res: Response) => {
 app.post('/participants', (req: Request, res: Response) => {
   const participantData = req.body;
   addParticipant(participantData);
-  res.send('Participant registered successfully');
 });
 
 app.get('/participants/:eventId', (req: Request, res: Response) => {
@@ -55,5 +54,5 @@ app.get('/participants/:eventId', (req: Request, res: Response) => {
 });
 
 app.listen(app.get('port'), () => {
-  console.log(`Web app is available at http://localhost:${app.get('port')}`);
+  console.log(`Server is available at http://localhost:${app.get('port')}`);
 });
