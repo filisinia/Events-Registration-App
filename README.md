@@ -34,6 +34,12 @@ The Events Registration App is an events board page where users can view the pag
     ```bash
     npm install
     ```
+
+    then
+
+    ```bash
+    npm run prepare
+    ```
     
 4. Run this command on the root folder:
    
@@ -60,4 +66,3 @@ The Events Registration App is an events board page where users can view the pag
 **Participants page**
 
 ![image](https://github.com/filisinia/Events-Registration-App/assets/113894148/46da2a76-6192-42e5-bd69-1fe5980ac210)
-
