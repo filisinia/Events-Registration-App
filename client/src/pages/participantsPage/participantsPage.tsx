@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 
 export default function ParticipantsPage() {
   const [participants, setParticipants] = useState<ParticipantData[]>([]);
+  const [searchText, setSearchText] = useState('');
   const eventId = Number(useParams().id);
 
   useEffect(() => {
@@ -18,11 +19,19 @@ export default function ParticipantsPage() {
     })();
   }, [eventId]);
 
+  function filterParticipants(participant: ParticipantData) {
+    const searchLowerCase = searchText.toLowerCase();
+    return (
+      participant.fullName.toLowerCase().includes(searchLowerCase) ||
+      participant.email.toLowerCase().includes(searchLowerCase)
+    );
+  };
+
   return (
     <>
-    <Header content='Participants' />
+    <Header content='Participants' onSearch={setSearchText} />
     <Container sx={{paddingTop: '20px'}}>
-      {participants.length === 0 ? <span>Loading...</span> : <ParticipantsElems participantsData={participants} />}
+      {participants.length === 0 ? <span>Loading...</span> : <ParticipantsElems participantsData={participants.filter(filterParticipants)} />}
     </Container>
     </>
   );
