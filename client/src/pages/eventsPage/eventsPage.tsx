@@ -4,11 +4,23 @@ import { Container } from "@mui/material";
 import Header from "../../components/header/header";
 import EventElems from "../../components/eventElems/eventElems";
 import { EventData } from "../../types/types";
+import RegisterPage from "../registerPage/registerPage";
 
 export default function EventsPage() {
   const [events, setEvents] = useState<EventData[]>([]);
+  const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
 
-  useEffect( () => {
+  function registerBtnHandler(event: EventData): void {
+    console.log('selected event:', event);
+    setSelectedEvent(event);
+  }
+
+  function backBtnHandler(): void {
+    setSelectedEvent(null);
+    console.log('selected event is null');
+  }
+
+  useEffect(() => {
     (async () => {
       const eventsData = await getAllEvents();
       if (eventsData) setEvents(eventsData);
@@ -17,10 +29,11 @@ export default function EventsPage() {
 
   return (
     <>
-    <Header content='Events' />
-    <Container sx={{ padding: '20px 0' }}>
-      { events.length === 0 ? <span>Loading...</span> : <EventElems eventData={events} /> }
-    </Container>
+      <Header content='Events' />
+      <Container sx={{ padding: '20px 0' }}>
+        {events.length === 0 ? <span>Loading...</span> : <EventElems eventData={events} registerBtnHandler={registerBtnHandler} />}
+      </Container>
+      { selectedEvent ? <RegisterPage eventData={selectedEvent} backBtnHandler={backBtnHandler} /> : '' }
     </>
   );
 }

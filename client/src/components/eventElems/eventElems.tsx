@@ -3,11 +3,16 @@ import { Card, CardContent, Box, Grid, Typography, Button } from "@mui/material"
 import { EventData } from "../../types/types";
 import styles from "./eventElemsStyle";
 
-export default function EventElems({ eventData }: { eventData: EventData[] }): JSX.Element {
+interface EventElemsProps {
+  eventData: EventData[];
+  registerBtnHandler: (_event: EventData) => void;
+}
+
+export default function EventElems({ eventData, registerBtnHandler }: EventElemsProps): JSX.Element {
   return (
     <Grid container spacing={3}>
-      {eventData.map((event, index) => (
-        <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+      {eventData.map((event) => (
+        <Grid item key={event.id} xs={12} sm={6} md={4} lg={3}>
           <Card variant='elevation' sx={{ height: '100%' }}>
             <CardContent sx={styles.cardContent}>
               <Typography variant='h6' fontWeight={600}>{event.title}</Typography>
@@ -17,7 +22,7 @@ export default function EventElems({ eventData }: { eventData: EventData[] }): J
                 <Typography>{event.date}</Typography>
               </Box>
               <Box display='flex' justifyContent='space-between'>
-                <Button component={Link} to='/register'>Register</Button>
+                <Button onClick={() => registerBtnHandler(event)}>Register</Button>
                 <Button component={Link} to='/people'>View</Button>
               </Box>
             </CardContent>
