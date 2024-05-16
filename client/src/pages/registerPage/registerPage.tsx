@@ -1,15 +1,16 @@
-import { Box, Button, Container, FormControlLabel, FormLabel, Radio, RadioGroup, TextField, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Button, Dialog, FormControlLabel, FormLabel, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 import styles from './registerPageStyle';
 import { EventData } from '../../types/types';
+import { FormEvent } from 'react';
 
 interface RegisterPageProps {
   eventData: EventData;
-  backBtnHandler: () => void;
+  closeDialog: () => void;
 }
 
-export default function RegisterPage({eventData, backBtnHandler}: RegisterPageProps): JSX.Element {
-  function handlerSubmit() {
+export default function RegisterPage({eventData, closeDialog}: RegisterPageProps): JSX.Element {
+  function handlerSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     console.log('Submit');
   }
 
@@ -18,9 +19,10 @@ export default function RegisterPage({eventData, backBtnHandler}: RegisterPagePr
   }
 
   return (
-    <Container sx={styles.container}>
-      <Container component='form' onSubmit={handlerSubmit} onChange={handlerChange} sx={styles.form}>
-        <Typography variant='h5'>Registration on the {eventData.title} event</Typography>
+    <Dialog open={!!eventData} onClose={closeDialog}>
+      <Box component="form" onSubmit={handlerSubmit} onChange={handlerChange} sx={styles.form}>
+        <Typography variant='h5'>Registration</Typography>
+        <Typography variant='h5' fontWeight={600}>{eventData.title}</Typography>
         <TextField label='Full name' name='fullName' size='small' required />
           <TextField
             label='Email'
@@ -28,10 +30,9 @@ export default function RegisterPage({eventData, backBtnHandler}: RegisterPagePr
             type='email'
             size='small'
             required />
-          <label htmlFor='dateOfBirth'>
-            Date of birth
-          </label>
+          <FormLabel id="dateOfBirth">Date of birth</FormLabel>
           <TextField
+            aria-labelledby="dateOfBirth"
             name='dateOfBirth'
             type='date'
             size='small'
@@ -41,7 +42,7 @@ export default function RegisterPage({eventData, backBtnHandler}: RegisterPagePr
           <RadioGroup
             aria-labelledby="howDidYouHear"
             defaultValue="social media"
-            name="radio-buttons-group"
+            name="howDidYouHear"
             row
           >
             <FormControlLabel value="social media" control={<Radio />} label="Social media" />
@@ -49,10 +50,10 @@ export default function RegisterPage({eventData, backBtnHandler}: RegisterPagePr
             <FormControlLabel value="found myself" control={<Radio />} label="Found myself" />
           </RadioGroup>
           <Box>
-            <Button onClick={backBtnHandler} variant='outlined'>Back</Button>
-            <Button component={Link} to='/people' variant='contained'>Register</Button>
+            <Button onClick={closeDialog} variant='outlined'>Back</Button>
+            <Button type='submit' variant='contained'>Register</Button>
           </Box>
-      </Container>
-    </Container>
+      </Box>
+    </Dialog>
   );
 }

@@ -15,7 +15,7 @@ export default function EventsPage() {
     setSelectedEvent(event);
   }
 
-  function backBtnHandler(): void {
+  function closeDialog(): void {
     setSelectedEvent(null);
     console.log('selected event is null');
   }
@@ -33,7 +33,7 @@ export default function EventsPage() {
       <Container sx={{ padding: '20px 0' }}>
         {events.length === 0 ? <span>Loading...</span> : <EventElems eventData={events} registerBtnHandler={registerBtnHandler} />}
       </Container>
-      { selectedEvent ? <RegisterPage eventData={selectedEvent} backBtnHandler={backBtnHandler} /> : '' }
+      { selectedEvent ? <RegisterPage eventData={selectedEvent} closeDialog={closeDialog} /> : '' }
     </>
   );
 }
