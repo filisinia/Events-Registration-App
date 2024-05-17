@@ -4,7 +4,12 @@ import { EventData, SortingParams } from '../../types/types';
 import { useEffect, useState } from 'react';
 import { getAllEvents } from '../../api/server-functions';
 
-export default function Sorting({ onSort }: { onSort?: (_eventsData: EventData[]) => void }): JSX.Element {
+interface SortingFunctionParams {
+  currentPage: number;
+  onSort?: (_eventsData: EventData[]) => void;
+}
+
+export default function Sorting({ currentPage, onSort }: SortingFunctionParams): JSX.Element {
   const [selectedSort, setSelectedSort] = useState<SortingParams>('none');
   const selectItemNames: SortingParams[] = ['title', 'date', 'organizer', 'none'];
 
@@ -17,12 +22,12 @@ export default function Sorting({ onSort }: { onSort?: (_eventsData: EventData[]
   useEffect(() => {
     async function sortEvents() {
       if (!onSort) return;
-      const sortedEvents = await getAllEvents(selectedSort);
-      if (sortedEvents) onSort(sortedEvents);
+      const sortedEvents = await getAllEvents(currentPage, selectedSort);
+      if (sortedEvents) onSort(sortedEvents.events);
     }
 
     sortEvents();
-  }, [selectedSort, onSort]);
+  }, [currentPage, selectedSort, onSort]);
 
   return (
     <FormControl size="small" sx={styles.sort} variant="filled">

@@ -15,4 +15,9 @@ export interface ParticipantData {
   id?: number;
 }
 
+export interface EventsDataResponse {
+  events: EventData[];
+  pagesQuantity: number;
+};
+
 export type SortingParams = 'title' | 'date' | 'organizer' | 'none';

@@ -12,7 +12,7 @@ export default function EventElems({ eventData, registerBtnHandler }: EventElems
   return (
     <Grid container spacing={3}>
       {eventData.map((event) => (
-        <Grid item key={event.id} xs={12} sm={6} md={4} lg={3}>
+        <Grid item key={event.id} xs={12} sm={6} md={6} lg={4}>
           <Card variant="elevation" sx={{ height: '100%' }}>
             <CardContent sx={styles.cardContent}>
               <Typography variant="h6" fontWeight={600}>
