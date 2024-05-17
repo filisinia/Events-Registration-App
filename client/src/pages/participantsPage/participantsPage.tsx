@@ -28,7 +28,7 @@ export default function ParticipantsPage() {
 
   return (
     <>
-      <Header content="Participants" onSearch={setSearchText} />
+      <Header currentPage={1} content="Participants" onSearch={setSearchText} />
       <Container sx={{ paddingTop: '20px' }}>
         {participants.length === 0 ? (
           <span>Loading...</span>

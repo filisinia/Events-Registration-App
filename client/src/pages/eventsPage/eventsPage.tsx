@@ -20,7 +20,7 @@ export default function EventsPage() {
     setSelectedEvent(null);
   }
 
-  function handlePageChange(event: React.ChangeEvent<unknown>, page: number): void {
+  function handlePageChange(_event: React.ChangeEvent<unknown>, page: number): void {
     setCurrentPage(page);
   }
 
