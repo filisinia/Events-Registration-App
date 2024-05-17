@@ -7,11 +7,12 @@ import { EventData } from '../../types/types';
 
 interface HeaderProps {
   content: 'Events' | 'Participants';
+  currentPage: number; 
   onSort?: (_eventsData: EventData[]) => void;
   onSearch?: (_text: string) => void;
 }
 
-export default function Header({ content, onSort, onSearch }: HeaderProps): JSX.Element {
+export default function Header({ content, currentPage = 1, onSort, onSearch }: HeaderProps): JSX.Element {
   return (
     <>
       <AppBar component="nav">
@@ -25,7 +26,7 @@ export default function Header({ content, onSort, onSearch }: HeaderProps): JSX.
               </Button>
             </Box>
           ) : (
-            <Sorting onSort={onSort} />
+            <Sorting currentPage={currentPage} onSort={onSort} />
           )}
         </Toolbar>
       </AppBar>
