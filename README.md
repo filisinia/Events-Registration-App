@@ -1,6 +1,8 @@
 ## Events Registration App
 The Events Registration App is an events board page where users can view the paginated list of available events. Users can register for events and see a list of registered participants.
 
+### Link: https://events-registration-app-frontend-for.onrender.com/
+
 ### Features
 - Events page
 - Registration a person
