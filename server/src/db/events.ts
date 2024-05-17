@@ -30,6 +30,14 @@ export function getAllEvents(offset: number, sortBy: string): EventData[] {
   return events;
 }
 
+export function getEventsQuantity(): number {
+  const requestString = 'SELECT COUNT(*) as count FROM events';
+  const statement = db.prepare(requestString);
+  const result = statement.get() as Partial<{ count: number }>;
+
+  return typeof result.count === 'number' ? result.count : 0;
+}
+
  export function getEventById(id: number): EventData | undefined {
   const statement = db.prepare('SELECT * FROM events WHERE id = ?');
   const event = statement.get(id) as EventData | undefined;

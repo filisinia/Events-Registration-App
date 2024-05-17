@@ -10,6 +10,7 @@ export default function EventsPage() {
   const [events, setEvents] = useState<EventData[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [pagesQuantity, setPagesQuantity] = useState(0);
 
   function registerBtnHandler(event: EventData): void {
     setSelectedEvent(event);
@@ -26,7 +27,10 @@ export default function EventsPage() {
   useEffect(() => {
     (async () => {
       const eventsData = await getAllEvents(currentPage);
-      if (eventsData) setEvents(eventsData);
+      if (eventsData) {
+        setEvents(eventsData.events);
+        setPagesQuantity(eventsData.pagesQuantity);
+      }
     })();
   }, [currentPage]);
 
@@ -42,7 +46,7 @@ export default function EventsPage() {
       </Container>
       {selectedEvent ? <RegistrationForm eventData={selectedEvent} closeDialog={closeDialog} /> : ''}
       <Pagination
-        count={10}
+        count={pagesQuantity}
         color="primary"
         onChange={handlePageChange}
         sx={{margin: '25px', display: 'flex', justifyContent: 'center'}}

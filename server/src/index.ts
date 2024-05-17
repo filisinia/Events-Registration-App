@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
-import { getAllEvents, getEventById } from './db/events';
+import { getAllEvents, getEventById, getEventsQuantity } from './db/events';
 import { getAllParticipants, addParticipant } from './db/participants';
 import { ParticipantData } from './types/types';
 
@@ -20,7 +20,10 @@ app.get('/events', (req: Request, res: Response) => {
   const offset = (page - 1) * limit;
 
   const events = getAllEvents(offset, sortBy);
-  res.json(events);
+  const eventsQuantity = getEventsQuantity();
+  const pagesQuantity = Math.ceil(eventsQuantity / limit);
+
+  res.json({events, pagesQuantity});
 });
 
 app.get('/events/:id', (req: Request, res: Response) => {

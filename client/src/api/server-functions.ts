@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { EventData, ParticipantData } from '../types/types';
+import { EventsDataResponse, ParticipantData } from '../types/types';
 
-export async function getAllEvents(page = 1, sort = 'none'): Promise<EventData[] | null> {
+export async function getAllEvents(page = 1, sort = 'none'): Promise<EventsDataResponse | null> {
   try {
     const response = await fetch(`/events/?page=${page}&sort=${sort}`);
     if (!response.ok) throw new Error('Network response was not ok');
     const eventsData = await response.json();
-    console.log(eventsData);
     return eventsData;
   } catch (error) {
     if (error instanceof Error) throw new Error(`Problem with getting data from server: ${error.message}`);

@@ -23,7 +23,7 @@ export default function Sorting({ currentPage, onSort }: SortingFunctionParams):
     async function sortEvents() {
       if (!onSort) return;
       const sortedEvents = await getAllEvents(currentPage, selectedSort);
-      if (sortedEvents) onSort(sortedEvents);
+      if (sortedEvents) onSort(sortedEvents.events);
     }
 
     sortEvents();
