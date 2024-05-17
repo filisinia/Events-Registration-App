@@ -21,10 +21,21 @@ eventsData.forEach(eventData => {
   addEvent(eventData);
 });
 
-export function getAllEvents(): EventData[] {
-  const statement = db.prepare('SELECT * FROM events');
+export function getAllEvents(offset: number, sortBy: string): EventData[] {
+  const sortingRequest = sortBy === 'none' ? '' : `ORDER BY ${sortBy}`;
+  const requestString = `SELECT * FROM events ${sortingRequest} LIMIT 9 OFFSET ${offset}`;
+
+  const statement = db.prepare(requestString);
   const events = statement.all() as EventData[];
   return events;
+}
+
+export function getEventsQuantity(): number {
+  const requestString = 'SELECT COUNT(*) as count FROM events';
+  const statement = db.prepare(requestString);
+  const result = statement.get() as Partial<{ count: number }>;
+
+  return typeof result.count === 'number' ? result.count : 0;
 }
 
  export function getEventById(id: number): EventData | undefined {
