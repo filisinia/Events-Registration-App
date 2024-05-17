@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 
 import { getAllEvents, getEventById } from './db/events';
 import { getAllParticipants, addParticipant } from './db/participants';
+import { ParticipantData } from './types/types';
 
 const app: Express = express();
 
@@ -43,8 +44,9 @@ app.get('/events/:id', (req: Request, res: Response) => {
 });
 
 app.post('/participants', (req: Request, res: Response) => {
-  const participantData = req.body;
+  const participantData: ParticipantData = req.body;
   addParticipant(participantData);
+  res.send('Participant registered successfully');
 });
 
 app.get('/participants/:eventId', (req: Request, res: Response) => {
